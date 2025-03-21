@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Login to your account" />
+    <title>Login Page</title>
+    <link rel="icon" type="image/png" href="../icons/logo.png" />
+    <link rel="stylesheet" href="../css/signup.css" />
+  </head>
+  <body>
+    <iframe src="./root.html" sandbox=""></iframe>
+
+    <div class="container">
+      <div class="img-container" id="imageContainer">
+        <img
+          src="../icons/imgbg.jpg"
+          alt="Login page illustration"
+          loading="lazy"
+        />
+      </div>
+      <form class="login-form" action="#" method="POST">
+        <button class="user">
+          <img src="../icons/userin.svg" />&nbsp;Sign up
+        </button>
+        <h1>Welcome</h1>
+        <!-- <p>A brand new day is here. It's your day to shape.</p> -->
+        <div class="message">
+          <p>
+            "A brand new day is here!<br />
+            Take full control of your cloud storage fast, secure and seamless,
+            in your hands. <br />Sign up now and manage your files with ease!"
+          </p>
+        </div>
+
+        <div class="social-login">
+          <button type="button" class="social-btn" id="google">
+            <img
+              src="../icons/google.png"
+              alt="Google logo"
+              width="20"
+              height="20"
+            />
+            Sign in with Google
+          </button>
+        </div>
+        <p class="signin">
+          Don't have an account?
+          <a href="login.html" id="signupLink">Sign in</a>
+        </p>
+      </form>
+    </div>
+    <script src="../js/login.js"></script>
+  </body>
+</html>

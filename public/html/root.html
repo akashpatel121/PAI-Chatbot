@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal AI</title>
+    <link rel="icon" type="image/png" href="../icons/logo.png" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/root.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="logo">
+        <a href="/html/root.html">
+          <img src="../icons/logo.png" class="icons" alt="logo" />
+        </a>
+      </div>
+
+      <button class="signin-btn" id="signin-btn">
+        Sign in
+        <i class="fa-regular fa-user signin-icon"></i>
+      </button>
+    </div>
+
+    <div class="centre">
+      <div id="typing-text"></div>
+    </div>
+    <div class="footer">
+      <form class="search" enctype="multipart/form-data" id="search">
+        <input id="file-input" hidden />
+        <label for="file-input" class="upload-label">
+          <i class="ri-upload-2-line"></i>
+        </label>
+
+        <input type="text" id="search-input" placeholder="What do you want!" />
+
+        <button type="button" class="send" id="send">
+          <i class="ri-arrow-up-line"></i>
+        </button>
+      </form>
+    </div>
+
+    <script src="../js/root.js"></script>
+  </body>
+</html>

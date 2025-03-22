@@ -208,3 +208,85 @@ function getFileIcon(fileType) {
   if (fileType.includes("text")) return "https://cdn-icons-png.flaticon.com/512/159/159603.png"; // Text file icon
   return "https://cdn-icons-png.flaticon.com/512/833/833524.png"; // Generic file icon
 }
+document.addEventListener("DOMContentLoaded", () => {
+ 
+  const chatBox = document.getElementById("chat-box");
+  const textInput = document.getElementById("text-input");
+  const sendButton = document.querySelector(".send");
+
+  function appendMessage(text, sender) {
+      const messageDiv = document.createElement("div");
+      messageDiv.classList.add("message", sender);
+
+      // Apply animation class
+      if (sender === "user") {
+          messageDiv.classList.add("message-slide-in");
+      } else {
+          messageDiv.classList.add("fadeIn");
+      }
+
+      messageDiv.innerHTML = text;
+      chatBox.appendChild(messageDiv);
+
+      // Auto-scroll to latest message
+      chatBox.scrollTop = chatBox.scrollHeight;
+  }
+
+  function sendMessage() {
+      const message = textInput.value.trim();
+      if (message === "") return;
+
+      // Append user message
+      appendMessage(message, "user");
+
+      // Clear input field
+      textInput.value = "";
+
+      // Simulate AI response after a delay
+      setTimeout(() => {
+          appendMessage("Hello! How can I assist you today?", "bot");
+      }, 800);
+  }
+
+  // Send message on button click
+  sendButton.addEventListener("click", sendMessage);
+
+  // Send message on 'Enter' key press
+  textInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+          e.preventDefault();
+          sendMessage();
+      }
+  });
+
+  initTypeAnimation();
+});
+
+//---------not working -------------
+document.addEventListener("DOMContentLoaded", function () {
+  const chatBox = document.getElementById("chat-box");
+  const typingText = document.getElementById("typing-text");
+  const textInput = document.getElementById("text-input");
+  const sendButton = document.querySelector(".send");
+
+  sendButton.addEventListener("click", function (event) {
+      event.preventDefault(); // Prevent form submission
+
+      const message = textInput.value.trim();
+      if (message !== "") {
+          if (typingText) {
+              typingText.style.display = "none"; // Hide the typing text
+          }
+
+          const userMessage = document.createElement("div");
+          userMessage.classList.add("message", "user");
+          userMessage.textContent = message;
+          chatBox.appendChild(userMessage);
+
+          textInput.value = ""; // Clear the input field
+
+          // Scroll to the bottom of the chat box
+          chatBox.scrollTop = chatBox.scrollHeight;
+      }
+  });
+});

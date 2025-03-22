@@ -69,7 +69,7 @@ fileInput.addEventListener("change", function () {
 sendButton.addEventListener("click", async (event) => {
   event.preventDefault();
   if (!fileInput.files.length && !textInput.value.trim()) {
-    alert("Please enter text or select a file.");
+   /*  alert("Please enter text or select a file."); */
     return;
   }
 
@@ -96,7 +96,6 @@ sendButton.addEventListener("click", async (event) => {
       uploadLabel.classList.remove("ri-check-line");
       uploadLabel.classList.add("ri-upload-2-line");
     } else {
-      alert("Upload failed");
     }
   } catch (error) {
     console.error("Error uploading:", error);
@@ -145,6 +144,74 @@ sendButton.addEventListener("click", async (event) => {
     }
   }
 });
+
+const fileInput = document.getElementById("file-input"); // Assuming you have an input with this id
+const previewContainer = document.getElementById("preview-container");
+const filePreview = document.getElementById("file-preview");
+const fileIcon = document.getElementById("file-icon");
+const fileNameDisplay = document.getElementById("file-name");
+const removeButton = document.getElementById("remove-btn");
+
+// Create a progress bar dynamically
+const progressBar = document.createElement("progress");
+progressBar.id = "progress-bar";
+progressBar.value = 0;
+progressBar.max = 100;
+previewContainer.appendChild(progressBar);
+
+// Handle file selection
+fileInput.addEventListener("change", function () {
+  const file = fileInput.files[0];
+
+  if (!file) {
+    return;
+  }
+
+  previewContainer.style.display = "flex";
+  fileNameDisplay.textContent = file.name;
+  progressBar.value = 0;
+
+  if (file.type.startsWith("image/")) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      filePreview.src = e.target.result;
+      filePreview.style.display = "block";
+      fileIcon.style.display = "none";
+    };
+    reader.readAsDataURL(file);
+  } else {
+    fileIcon.src = "file-icon.png"; // Use a default file icon for non-images
+    fileIcon.style.display = "block";
+    filePreview.style.display = "none";
+  }
+
+  simulateUpload(file); // Start fake upload simulation
+});
+
+// Simulate a file upload with progress
+function simulateUpload(file) {
+  let progress = 0;
+  const interval = setInterval(() => {
+    progress += 10;
+    progressBar.value = progress;
+
+    if (progress >= 100) {
+      clearInterval(interval);
+      console.log("File uploaded successfully");
+    }
+  }, 300);
+}
+
+// Remove file from preview
+function removeFile() {
+  fileInput.value = "";
+  previewContainer.style.display = "none";
+  filePreview.src = "";
+  fileIcon.style.display = "none";
+  fileNameDisplay.textContent = "No file chosen";
+  progressBar.value = 0;
+}
+
 
 // -------- upload Preview ----------
 function displayFile() {
@@ -232,22 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
       chatBox.scrollTop = chatBox.scrollHeight;
   }
 
-  function sendMessage() {
-      const message = textInput.value.trim();
-      if (message === "") return;
-
-      // Append user message
-      appendMessage(message, "user");
-
-      // Clear input field
-      textInput.value = "";
-
-      // Simulate AI response after a delay
-      setTimeout(() => {
-          appendMessage("Hello! How can I assist you today?", "bot");
-      }, 800);
-  }
-
+  
   // Send message on button click
   sendButton.addEventListener("click", sendMessage);
 

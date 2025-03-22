@@ -1,77 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Personal AI</title>
-    <link rel="icon" type="image/png" href="/icons/logo.png" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/css/home.css" />
-  </head>
-  <body>
-    <div class="header">
-      <div class="logo">
-        <a href="/home">
-          <img src="/icons/logo.png" class="icons" alt="logo" />
-        </a>
-      </div>
-      <div class="profile">
-        <% if (user && user.photos && user.photos.length > 0) { %>
-        <img
-          src="<%= user.photos[0].value %>"
-          alt="Profile picture"
-          title="<%= user.displayName %>"
-        />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal AI</title>
+  <link rel="icon" type="image/png" href="/icons/logo.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/home.css" />
+</head>
+
+<body>
+  <div class="header">
+    <div class="logo">
+      <a href="/home">
+        <img src="/icons/logo.png" class="icons" alt="logo" />
+      </a>
+    </div>
+    <div class="profile">
+      <% if (user && user.photos && user.photos.length> 0) { %>
+        <img src="<%= user.photos[0].value %>" alt="Profile picture" title="<%= user.displayName %>" />
         <% } else { %>
-        <img
-          src="/icons/profile.png"
-          alt="Default profile picture"
-          title="<%= user ? user.displayName : 'User' %>"
-        />
-        <% } %>
-      </div>
+          <img src="/icons/profile.png" alt="Default profile picture" title="<%= user ? user.displayName : 'User' %>" />
+          <% } %>
     </div>
+  </div>
 
-    <div class="settings">
-      <button class="info"><%=user.displayName%> <%=user.email%></button>
-
-      <button class="options">
-        Language <i class="fa-solid fa-language"></i>
-      </button>
-      <button class="options">
-        Theme <i class="fa-solid fa-palette"></i>
-      </button>
-      <button class="options">
-        Give feedback <i class="fa-solid fa-comment-dots"></i>
-      </button>
-      <button class="options">
-        About <i class="fa-solid fa-info-circle"></i>
-      </button>
-    <!-- ....    -->
-      <button class="logout">
-        Sign out &nbsp; &nbsp; <i class="fa-solid fa-sign-out-alt"></i>
-      </button>
-      
-      <div class="links">
-        <a href="#">Privacy</a> <a href="#">Terms</a> <a href="#">FAQ</a>
-      </div>
+  <div class="settings">
+    <button class="info">
+      <%=user.displayName%>
+        <%=user.email%>
+    </button>
+    <button class="options">
+      Language &nbsp;<i class="fa-solid fa-language" id="icons"></i>
+    </button>
+    <button class="options">Theme</button>
+    <button class="options">
+      Give feedback<i class="ri-feedback-line" id="icons"></i>
+    </button>
+    <button class="options">About</button>
+    <button class="logout">
+      Sign out &nbsp;&nbsp;<i class="ri-logout-box-r-line"></i>
+    </button>
+    <div class="links">
+      <a href="#">Privacy</a> &nbsp;&nbsp;
+      <a href="#">Terms</a>&nbsp;&nbsp;
+      <a href="#">FAQ</a>&nbsp;&nbsp;
     </div>
+  </div>
 
-    <div class="centre" id="chat-box">
-      <div
-        id="typing-text"
-        data-text="Hello <%= user.displayName %>, Welcome to your Personal Assistant!"
-      ></div>
+  <!-- Chatbox UI -->
+  <div class="centre" id="chat-box">
+    <div id="typing-text" data-text="Hello <%= user.displayName %>, Welcome to your Personal Assistant!"></div>
+
+    <!-- Chatbox messages container -->
+    <div id="chat-container">
+      <div id="chatbox"></div>
+    </div>
+  </div>
+  
       <!-- <div class="preview"></div> -->
     </div>
     <div id="mainPreviewContainer">
@@ -96,5 +86,6 @@
     </div>
 
     <script src="../js/home.js"></script>
+    <script src="../js/script.js"></script>
   </body>
 </html>

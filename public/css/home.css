@@ -29,30 +29,37 @@ body {
   width: auto;
 }
 
+/* Settings Panel */
+/* Settings Panel */
 .settings {
   position: absolute;
   top: 8vh;
   right: 20px;
   max-height: 500px;
   min-height: 400px;
-  width: 250px;
-  background-color: #414158;
-  border-radius: 8px;
+  width: 260px;
+  background: rgba(20, 20, 30, 0.8);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  border: 1px solid white;
-
-  opacity: 0; /* Initially hidden */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 0px 12px rgba(0, 140, 255, 0.5);
+  opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transform: translateY(-10px);
 }
+
 .settings.active {
   opacity: 1;
   visibility: visible;
+  transform: translateY(0);
 }
 
+/* User Info */
 .info {
   height: 60px;
   width: 90%;
@@ -60,54 +67,92 @@ body {
   outline: none;
   border: none;
   border-radius: 10px;
+  background: rgb(0,71,171);
+background: linear-gradient(159deg, rgba(0,71,171,1) 0%, rgba(28,169,201,1) 100%);
+  color: white;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
+.info:hover{
+  transform: translateY(-2px);
+  box-shadow: 0px 0px 7px   rgb(0, 41, 74);
+}
+/* Options Buttons */
 .options {
   font-size: 14px;
   text-align: start;
   color: white;
-  font-family: arial;
+  font-family: Arial, sans-serif;
   font-weight: 500;
-  height: 35px;
-  width: 80%;
+  height: 40px;
+  width: 85%;
   padding: 10px;
   border: none;
   border-radius: 10px;
-  background: #2d2d2d;
+  background: rgba(45, 45, 70, 0.6);
   display: flex;
   justify-content: space-between;
-  z-index: 1000;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
 }
 
+.options i {
+  color: rgb(0, 140, 255);
+}
 .options:hover {
-  transition: all 0.4s ease;
-  color: #008cff;
-  font-weight: 600;
-  box-shadow: none;
-  opacity: 0.9;
-  background-color: rgb(243, 243, 243);
+  color:  rgb(0, 140, 255);
+  background-color: white;
+  box-shadow: 0px 0px 10px  rgb(0, 140, 255);
+  transform: translateY(-2px);
 }
 
+/* Logout Button */
 .logout {
-  height: 35px;
-  width: 80%;
+  height: 40px;
+  width: 85%;
   font-weight: 600;
-  border: 1px solid white;
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 10px;
   background-color: transparent;
   color: white;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .logout:hover {
-  color: rgb(203, 20, 20);
+  color: rgb(255, 60, 60);
   background-color: white;
+  box-shadow: 0px 0px 10px rgb(255, 60, 60);
+  transform: translateY(-2px);
 }
 
+/* Links */
 .links {
-  font-family: serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
-  color: #3663eb;
+  color:  rgb(0, 140, 255);
+  font-size: 13px;
+  display: flex;
+  gap: 10px;
   cursor: pointer;
 }
+
+.links a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease-in-out;
+}
+
+.links a:hover {
+  color: white;
+  text-shadow: 0px 0px 6px white;
+}
+
+/* ........................... */
 
 #icons {
   font-size: 18px;
@@ -161,6 +206,10 @@ body {
   font-size: 2rem;
   padding: 10% 10%;
   color: #f2ddcc;
+}
+#chat-box{
+  /* background-color: #008cff; */
+  height: 80%;
 }
 
 .footer {
@@ -249,6 +298,31 @@ input {
 .upload-label:hover {
   background-color: white;
   transition: cubic-bezier(0.19, 1, 0.22, 1) 0.2s;
+}
+.tick-animate {
+  animation: tickScale 0.5s ease-in-out;
+  color: white; 
+}
+
+@keyframes tickScale {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.tick-animate {
+  transform: scale(1.5);
+  color: white !important;
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+  font-size: 25px !important; 
 }
 .send {
   background: transparent;
@@ -369,6 +443,37 @@ input {
 }
 .remove-btn:hover {
   background: darkred;
+}
+.message {
+  padding: 12px;
+  border-radius: 10px;
+  margin: 8px 0;
+  max-width: 60%;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.3s forwards;
+  word-wrap: break-word;
+}
+
+@keyframes fadeIn {
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.user {
+  background: #007bff;
+  text-align: right;
+  align-self: flex-end;
+  color: white;
+}
+
+.bot {
+  background: #444;
+  text-align: left;
+  align-self: flex-start;
+  color: white;
 }
 
 @media screen and (max-width: 480px) {

@@ -11,7 +11,7 @@
   <body>
     <iframe src="./root.html" sandbox=""></iframe>
 
-    <div class="container">
+    <div class="container" id="Container" >
       <div class="img-container" id="imageContainer">
         <img
           src="../icons/imgbg.jpg"
@@ -46,10 +46,11 @@
         </div>
         <p class="signin">
           Don't have an account?
-          <a href="login.html" id="signupLink">Sign in</a>
+          <a href="#" id="signupLink" onclick="delayedRedirect('login.html', 1400)">Sign in</a>
         </p>
       </form>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js" integrity="sha512-f6bQMg6nkSRw/xfHw5BCbISe/dJjXrVGfz9BSDwhZtiErHwk7ifbmBEtF9vFW8UNIQPhV2uEFVyI/UHob9r7Cw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="../js/login.js"></script>
   </body>
 </html>

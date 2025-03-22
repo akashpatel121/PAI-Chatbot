@@ -213,6 +213,20 @@ function removeFile() {
 }
 
 
+  document.getElementById('sendButton').addEventListener('click', function() {
+    const previewContainer = document.getElementById('preview-container');
+    if (previewContainer) {
+      previewContainer.style.display = 'none';
+    }
+  });
+
+  function removeFile() {
+    const previewContainer = document.getElementById('preview-container');
+    previewContainer.style.display = 'none';
+  }
+
+
+
 // -------- upload Preview ----------
 function displayFile() {
   const input = document.getElementById('file-input');

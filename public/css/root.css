@@ -6,13 +6,26 @@
 
 body {
   height: 100vh;
+  margin: 0;
   overflow: hidden;
-  background-color: #0f0f0f;
-  background-size: 30px 30px;
-  background-image: radial-gradient(
-    rgba(255, 255, 255, 0.2) 5%,
-    transparent 5%
-  );
+  background-color: #0f0f0f; /* Fallback dark background */
+  background-image: 
+      radial-gradient(#ffffff33 5%, transparent 5%), /* Dotted pattern */
+      radial-gradient(circle at top, #142545, #020204); /* Gradient */
+  background-size: 60px 60px, 100% 100%; /* Adjusted dot spacing and gradient coverage */
+  background-position: 0 0, 0 0; /* Align both backgrounds */
+
+  /* Animate the dotted pattern upwards */
+  animation: moveDots 10s linear infinite;
+}
+
+@keyframes moveDots {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 0 -60px, 0 0; /* Moves the dots upwards */
+  }
 }
 
 .header {

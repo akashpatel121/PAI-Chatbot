@@ -15,6 +15,82 @@ body {
   );
 }
 
+
+
+#chatbox {
+
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-message {
+  background: #007bff;
+  color: white;
+  word-wrap: break-word;
+  padding: 12px;
+  border-radius: 10px;
+  margin: 8px 0;
+  max-width: 60%;
+  align-self: flex-end; /* Push user messages to the right */
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.3s forwards;
+}
+
+.bot-message {
+  background: #706d6d;
+  color: white;
+  word-wrap: break-word;
+  padding: 12px;
+  border-radius: 10px;
+  margin: 8px 0;
+  max-width: 60%;
+  align-self: flex-start; /* Push bot messages to the left */
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message {
+  padding: 12px;
+  border-radius: 10px;
+  margin: 8px 0;
+  max-width: 60%;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.3s forwards;
+  word-wrap: break-word;
+}
+
+@keyframes fadeIn {
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.user {
+  background: #007bff;
+  text-align: right;
+  align-self: flex-end;
+  color: white;
+}
+
+.bot {
+  background: #444;
+  text-align: left;
+  align-self: flex-start;
+  color: white;
+}
+
 .header {
   height: 6vh;
   width: 100%;

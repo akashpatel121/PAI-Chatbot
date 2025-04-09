@@ -25,7 +25,6 @@ A **CRUD-capable AI chatbot** that allows users to **upload, retrieve, and manag
 | **Google OAuth 2.0** | Secure authentication |
 | **Google Drive API** | Store & retrieve user files |
 | **Multer (Node.js)** | Handle file uploads |
-| **OpenAI GPT-4 / Gemini API** | Intelligent file naming & retrieval |
 | **HTML, CSS, JavaScript** | Frontend UI |
 | **EJS (Embedded JavaScript)** | Dynamic templating |
 
